@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — MedTech Global Connect{% endblock %}
+{% block content %}
+<p class="muted">{{ manufacturers|length }} manufacturers (China) · {{ investors|length }} investors/partners · showing top 3 matches per manufacturer</p>
+<div class="grid">
+  {% for m in manufacturers %}
+  <div class="card">
+    <span class="badge">{{ m.sector }}</span>
+    <h3><a href="/manufacturer/{{ m.id }}">{{ m.name }}</a></h3>
+    <p class="muted">{{ m.city }}, {{ m.country }} · {{ m.stage }} stage</p>
+    <p style="font-size:13px">{{ m.sub_specialty }}</p>
+    {% for tag in m.tags.split(',') %}<span class="tag">{{ tag }}</span>{% endfor %}
+
+    <div style="margin-top:12px">
+      {% for match in matches[m.id] %}
+      <div class="match-row">
+        <div>
+          <div>{{ match.investor.name }}</div>
+          <div class="muted">{{ match.investor.type }} · {{ match.investor.country }}</div>
+          <div class="bar-bg"><div class="bar-fill" style="width:{{ match.score }}%"></div></div>
+        </div>
+        <div class="score">{{ match.score }}%</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

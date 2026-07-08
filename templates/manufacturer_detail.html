@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ manufacturer.name }}{% endblock %}
+{% block content %}
+<p><a href="/">&larr; Back to dashboard</a></p>
+<div class="card">
+  <span class="badge">{{ manufacturer.sector }}</span>
+  <h2 style="margin:6px 0">{{ manufacturer.name }}</h2>
+  <p class="muted">{{ manufacturer.city }}, {{ manufacturer.country }} · {{ manufacturer.company_size }} · {{ manufacturer.stage }} stage · ~${{ manufacturer.annual_revenue_usd_m }}M revenue</p>
+  <p>{{ manufacturer.description }}</p>
+  <p><b>Certifications:</b> {{ manufacturer.certifications }}</p>
+  <p><b>Target markets:</b> {{ manufacturer.target_markets }}</p>
+  {% for tag in manufacturer.tags.split(',') %}<span class="tag">{{ tag }}</span>{% endfor %}
+</div>
+
+<h3 style="margin-top:28px">Match breakdown — all investors/partners</h3>
+<table>
+<tr><th>Investor / Partner</th><th>Type</th><th>Overall</th><th>Sector</th><th>Text Similarity</th><th>Geography</th><th>Stage</th></tr>
+{% for match in matches %}
+<tr>
+  <td>{{ match.investor.name }}</td>
+  <td>{{ match.investor.type }}</td>
+  <td class="score">{{ match.score }}%</td>
+  <td>{{ match.sector_score }}%</td>
+  <td>{{ match.text_similarity_score }}%</td>
+  <td>{{ match.geography_score }}%</td>
+  <td>{{ match.stage_score }}%</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

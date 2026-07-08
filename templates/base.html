@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}MedTech Global Connect{% endblock %}</title>
+<style>
+  :root { --navy:#1F3864; --accent:#2E86AB; --bg:#F7F9FC; --card:#FFFFFF; --line:#E3E8EF; --muted:#6B7280; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); margin:0; color:#1a1a1a; }
+  header { background: var(--navy); color:#fff; padding: 20px 32px; }
+  header h1 { margin:0; font-size: 22px; }
+  header p { margin: 4px 0 0; opacity:.8; font-size: 13px; }
+  main { max-width: 1200px; margin: 0 auto; padding: 28px 32px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 18px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 20px; }
+  .card h3 { margin:0 0 4px; font-size:16px; }
+  .badge { display:inline-block; background:#EAF1FB; color:var(--navy); font-size:11px; font-weight:600; padding:3px 8px; border-radius:20px; margin-right:6px; }
+  .muted { color: var(--muted); font-size: 13px; }
+  .match-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-top:1px solid var(--line); font-size: 13px; }
+  .score { font-weight:700; color: var(--accent); }
+  a { color: var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .bar-bg { background:#EEF1F6; border-radius:6px; height:6px; width:100%; overflow:hidden; margin-top:4px;}
+  .bar-fill { background: var(--accent); height:100%; }
+  table { width:100%; border-collapse: collapse; font-size: 13px; }
+  table th, table td { text-align:left; padding: 6px 8px; border-bottom:1px solid var(--line); }
+  .tag { display:inline-block; background:#F1F5F9; color:#334155; font-size:11px; padding:2px 7px; border-radius:5px; margin:2px 3px 0 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>MedTech Global Connect — MVP Prototype</h1>
+  <p>AI-assisted matching between Chinese medical-sector manufacturers and global investors/partners · Synthetic data only</p>
+</header>
+<main>
+{% block content %}{% endblock %}
+</main>
+</body>
+</html>
